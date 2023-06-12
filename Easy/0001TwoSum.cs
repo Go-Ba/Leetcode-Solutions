@@ -1,4 +1,5 @@
-﻿public class TwoSum
+﻿using System.Collections;
+public class TwoSum
 {
     //https://leetcode.com/problems/two-sum/
     public class Solution
