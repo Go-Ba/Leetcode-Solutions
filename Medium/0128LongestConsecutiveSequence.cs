@@ -7,7 +7,7 @@ public class LongestConsecutiveSequence
     //must run in O(n)
 
     //According to leetcode this hashset performs worse than radix sort despite being the recommended method
-    //maybe I just implemented this badly?
+    //maybe I just implemented this badly? or the test doesn't test at large enough scale for big O?
     public class Solution_Hashset
     {
         public int LongestConsecutive(int[] nums)
