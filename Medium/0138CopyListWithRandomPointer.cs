@@ -3,8 +3,42 @@
 public class CopyListWithRandomPointer
 {
     //https://leetcode.com/problems/copy-list-with-random-pointer/
-    
-    public class Solution
+    public class Solution_Dictionary
+    {
+        public Node CopyRandomList(Node head)
+        {
+            if (head == null)
+                return null;
+
+            Dictionary<Node, Node> oldToNewMap = new();
+            Node oldCurrent = head;
+            Node newCurrent, newPrev = null;
+            while (oldCurrent != null)
+            {
+                newCurrent = new Node(oldCurrent.val);
+                if (newPrev != null)
+                    newPrev.next = newCurrent;
+
+                oldToNewMap.Add(oldCurrent, newCurrent);
+
+                newPrev = newCurrent;
+                oldCurrent = oldCurrent.next;
+            }
+
+            oldCurrent = head;
+            newCurrent = oldToNewMap[head];
+            while (oldCurrent != null)
+            {
+                if (oldCurrent.random != null)
+                    newCurrent.random = oldToNewMap[oldCurrent.random];
+                newCurrent = newCurrent.next;
+                oldCurrent = oldCurrent.next;
+            }
+            return oldToNewMap[head];
+        }
+    }
+
+    public class Solution_ParallelLists
     {
         public Node CopyRandomList(Node head)
         {
