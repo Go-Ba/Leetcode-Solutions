@@ -30,37 +30,3 @@ public class GroupAnagrams
         }
     }
 }
-public class MaximizeTheConfusionOfAnExame
-{
-    //https://leetcode.com/problems/maximize-the-confusion-of-an-exam/
-    public class Solution
-    {
-        public int MaxConsecutiveAnswers(string answerKey, int k)
-        {
-            int left = 0, T = 0, F = 0, maxSpan = 0;
-
-            for (int right = 0; right < answerKey.Length; right++)
-            {
-                //count the number of F and T chars so far
-                if (answerKey[right] == 'F')
-                    F++;
-                else
-                    T++;
-
-                //if both T and F are over k, then we have an invalid window
-                while (T > k && F > k)
-                {
-                    //move the left pointer until we return to a valid window
-                    if (answerKey[left] == 'F')
-                        F--;
-                    else
-                        T--;
-                    left++;
-                }
-                //compare the current window to the maximum we have found
-                maxSpan = Math.Max(maxSpan, right - left + 1);
-            }
-            return maxSpan;
-        }
-    }
-}
